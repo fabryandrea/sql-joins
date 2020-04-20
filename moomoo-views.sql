@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS dim_users;
 CREATE TABLE dim_users (
-  id INTEGER,
+  id VARCHAR(10),
+  cust_id INTEGER,
 	name VARCHAR(10),
   zipcode INTEGER
 );
@@ -12,15 +13,15 @@ CREATE TABLE fct_views (
 	prod_id VARCHAR(5)
 );
 
-INSERT INTO dim_users VALUES ('a4bf', 'Alex', 10128);
-INSERT INTO dim_users VALUES ('b5g8', NULL, NULL);
-INSERT INTO dim_users VALUES ('c2d5', 'Rosario', 21011);
-INSERT INTO dim_users VALUES ('d4h9', NULL, NULL);
-INSERT INTO dim_users VALUES ('e2f3', 'Chloe', 72217);
-INSERT INTO dim_users VALUES ('f5l8', NULL, NULL);
-INSERT INTO dim_users VALUES ('g2b2', NULL, NULL);
-INSERT INTO dim_users VALUES ('h6m9', NULL, NULL);
-INSERT INTO dim_users VALUES ('i0p3', NULL, NULL);
+INSERT INTO dim_users VALUES ('a4bf', 1, 'Alex', 10128);
+INSERT INTO dim_users VALUES ('b5g8', NULL, NULL, NULL);
+INSERT INTO dim_users VALUES ('c2d5', 2, 'Rosario', 21011);
+INSERT INTO dim_users VALUES ('d4h9', NULL, NULL, NULL);
+INSERT INTO dim_users VALUES ('e2f3', 3, 'Chloe', 72217);
+INSERT INTO dim_users VALUES ('f5l8', NULL, NULL, NULL);
+INSERT INTO dim_users VALUES ('g2b2', NULL, NULL, NULL);
+INSERT INTO dim_users VALUES ('h6m9', NULL, NULL, NULL);
+INSERT INTO dim_users VALUES ('i0p3', NULL, NULL, NULL);
 
 
 INSERT INTO fct_orders VALUES ('2019-06-22 19:10:25', 'a4bf', 'SKU01');

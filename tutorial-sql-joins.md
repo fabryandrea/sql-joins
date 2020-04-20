@@ -32,9 +32,11 @@ Then add our data from (the `moomoo-orders.sql` file)[]
 
 What do we have here? And why do these tables start with these funny preambles, `fct_` and `dim_`?
 
-These abbrevations denote so called fact and dimension tables. Fact tables record certain facts about our business, such as order transactions - this table records when they took place, what customers were involved, and what products they ordered.
+These abbrevations denote so called fact and dimension tables. Fact tables record certain facts about our business, such as order transactions - this table records when order transactions took place, what customers were involved, and what products they ordered.
 
-Dimension tables add more information about one dimension of the fact table - they tell me more about the customers and the products involved. The sheer genius of this design? If a customer moves and their zipcode changes, I only have to update one table, no matter how many products they purchased!
+Dimension tables add more information about one dimension of the fact table - they tell us more about the customers and the products involved. Customers here have
+
+The sheer genius of this design? If a customer moves and their zipcode changes, I only have to update one table, no matter how many products they purchased!
 
 Let's take a look at that product with the id `SKU09`.
 
