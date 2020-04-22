@@ -47,6 +47,8 @@ Now, let's take a look at that product with the id `SKU09`:
 
 In order to answer this question, let's first learn about CTEs (Common Table Expressions) and aliases, as they are super helpful in answering complex questions in clean code.
 
+We can declare a CTE with `WITH` and alias any table with `AS`. Here, first I find my customers who bought this product and then join it to the customers dimension table to get their names.
+
 ```
 WITH leggings_customers AS (
 
@@ -82,6 +84,8 @@ ON a.id = b.id
 
 Find all customers, including those who haven't yet purchased anything yet but registered on our website, and the products they purchased (if any).
 
+In this particular case, we are reversing what we did before - I want all customer names, so I am starting with the `customers` dimension table not the `orders` fact table. Again, I want to join `customers` with `orders`, except this time I want to keep everyone in the left table, not just the ones that overlap with the right table.
+
 **LEFT JOIN** - the syntax:
 ```
 SELECT a.this, b.that
@@ -102,7 +106,10 @@ First, note that these are not orders, so our `orders` fact table is not going t
 
 ## Aside on event tracking
 
-Most ecommerce companies track select events on their websites using anonymous IDs. When a customer logs in, that anonymous ID will be connected to their account ID. Since anonymous IDs are assigned randomly at every visit, one customer may have multiple anonymous IDs but only one account ID. Sometimes a customer will never log in during their browsing session and the anonymous ID will remain anonymous.
+Most ecommerce companies track select events on their websites using anonymous IDs. When a customer logs in, that anonymous ID will be traced to their account ID. Since anonymous IDs are assigned randomly at every visit, one customer may have multiple anonymous IDs but will only have one account ID. Sometimes a customer will never log in during their browsing session and their anonymous ID will remain truly anonymous.
+
+Here, we are 
+
 
 **RIGHT JOIN** - the syntax:
 ```
