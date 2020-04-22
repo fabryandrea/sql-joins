@@ -69,9 +69,7 @@ SELECT * FROM with_names;
 ```
 
 
-**INNER JOIN**
-
-What is the syntax:
+INNER JOIN - the syntax:
 ```
 SELECT a.this, b.that
 FROM table_a AS a
@@ -97,15 +95,15 @@ ON a.id = b.id
 How it is executed:
 
 
-**3. RIGHT JOIN**
+## 3. RIGHT JOIN
 
 Find a list of website visitors who viewed this product, with their name and zipcode (if we have them).
 
-First, note that these are not orders, so our `orders` fact table is not going to work. So let's get the `views` fact table from here: [the `moomoo-views.sql` file](https://github.com/fabryandrea/sql-joins/blob/master/moomoo-views.sql)
+First, note that these are not orders, so our `orders` fact table is not going to work. So let's get the `views` fact table from this file: [`moomoo-views.sql`](https://github.com/fabryandrea/sql-joins/blob/master/moomoo-views.sql)
 
 ![views ERD](/images/fct_views.png)
 
-## Aside on event tracking
+### Aside on event tracking
 
 Most ecommerce companies track select events on their websites using anonymous IDs. When a customer logs in, that anonymous ID will be connected to their account ID. Since anonymous IDs are assigned randomly at every visit, one customer may have multiple anonymous IDs but only one account ID. Sometimes a customer will never log in during their browsing session and the anonymous ID will remain anonymous.
 
@@ -120,7 +118,7 @@ ON a.id = b.id
 How it is executed:
 
 
-**4. SELF JOIN**
+## 4. SELF JOIN
 
 Find people who viewed `SKU01` before `SKU09`.
 
