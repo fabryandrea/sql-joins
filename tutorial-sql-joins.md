@@ -37,17 +37,18 @@ What do we have here? And why do these tables start with these funny preambles, 
 These abbrevations denote so called fact and dimension tables.
 * **Fact tables** record certain facts about our business, such as order transactions - this table records when order transactions took place, what customers were involved, and what products they ordered.
 * **Dimension tables** add more information about one dimension of the fact table - they tell us more about the customers and the products involved. Customers here have names and zipcodes; product have product names, families, and prices.
+* They are connected to each other by **keys** :key:
 
 The sheer genius of this design? If a customer moves and their zipcode changes, I only have to update one table, no matter how many products they purchased!
 
-Now, let's take a look at that product with the id `SKU09`:
+Now, back to teh question: Find the names of all customers who purchased `SKU09`. Let's take a look at that product with the id `SKU09`:
 * What is it? `SELECT * FROM dim_products WHERE id = 'SKU09'`
 * Who bought it? `SELECT cust_id FROM fct_orders WHERE prod_id = 'SKU09'`
 * How do I get their names?
 
 In order to answer this question, let's first learn about CTEs (Common Table Expressions) and aliases, as they are super helpful in answering complex questions in clean code.
 
-We can declare a CTE with `WITH` and alias any table with `AS`. Here, first I find my customers who bought this product and then join it to the customers dimension table to get their names.
+We can declare a CTE with `WITH` and alias any table with `AS`. Here, first I find my customers who bought this product (same as :point_up:) and then join it to the customers dimension table to get their names.
 
 ```
 WITH leggings_customers AS (
@@ -108,7 +109,7 @@ First, note that these are not orders, so our `orders` fact table is not going t
 
 Most ecommerce companies track select events on their websites using anonymous IDs. When a customer logs in, that anonymous ID will be traced to their account ID. Since anonymous IDs are assigned randomly at every visit, one customer may have multiple anonymous IDs but will only have one account ID. Sometimes a customer will never log in during their browsing session and their anonymous ID will remain truly anonymous.
 
-Here, we are 
+Here, we are going the opposite way - we want to keep everyone in the right `view` table and add information from the left `users` table, if available. Hence, we are using a - :ta_da: - right join.
 
 
 **RIGHT JOIN** - the syntax:
@@ -126,6 +127,8 @@ ON a.id = b.id
 Find people who viewed `SKU01` before `SKU09`.
 
 Let's start by talking a look at what we expect the answer to be: `SELECT * FROM fct_views ORDER BY user_id, viewed_at DESC`
+
+Previously, we were joining separate tables - apples to oranges, so to speak. But now all the information we need is in one table, we just want to compare this table to itself. This is extremely helpful when we have events that take place over time (for instance, we are looking at people who converted into customers after browsing our website.)
 
 **SELF JOIN** - the syntax:
 ```
