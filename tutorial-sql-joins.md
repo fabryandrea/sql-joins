@@ -26,9 +26,11 @@ Let's connect to this database:
 
 Note: We are now in Postgres land and not in terminal land - lines no longer start with `$` but with `#`.
 
-Then add our data from (the `moomoo-orders.sql` file)[]
+Then add our data from (the `moomoo-orders.sql` file)[https://github.com/fabryandrea/sql-joins/blob/master/moomoo-orders.sql]
 
 ### Sidebar on relational databases
+
+![orders ERD](/images/fct_orders.jpeg)
 
 What do we have here? And why do these tables start with these funny preambles, `fct_` and `dim_`?
 
