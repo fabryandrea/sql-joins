@@ -109,7 +109,7 @@ First, note that these are not orders, so our `orders` fact table is not going t
 
 Most ecommerce companies track select events on their websites using anonymous IDs. When a customer logs in, that anonymous ID will be traced to their account ID. Since anonymous IDs are assigned randomly at every visit, one customer may have multiple anonymous IDs but will only have one account ID. Sometimes a customer will never log in during their browsing session and their anonymous ID will remain truly anonymous.
 
-Here, we are going the opposite way - we want to keep everyone in the right `view` table and add information from the left `users` table, if available. Hence, we are using a - :ta_da: - right join.
+Here, we are going the opposite way - we want to keep everyone in the right `views` table and add information from the left `users` table, if available. Hence, we are using a - :tada: - right join.
 
 
 **RIGHT JOIN** - the syntax:
