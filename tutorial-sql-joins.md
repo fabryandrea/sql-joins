@@ -28,7 +28,7 @@ Let's connect to this database:
 
 Then add our data from this file: [`moomoo-orders.sql`](https://github.com/fabryandrea/sql-joins/blob/master/moomoo-orders.sql)
 
-### Sidebar on relational databases
+## Sidebar on relational databases
 
 ![orders ERD](/images/fct_orders.png)
 
@@ -36,7 +36,7 @@ What do we have here? And why do these tables start with these funny preambles, 
 
 These abbrevations denote so called fact and dimension tables.
 * **Fact tables** record certain facts about our business, such as order transactions - this table records when order transactions took place, what customers were involved, and what products they ordered.
-* **Dimension tables** add more information about one dimension of the fact table - they tell us more about the customers and the products involved. Customers here have
+* **Dimension tables** add more information about one dimension of the fact table - they tell us more about the customers and the products involved. Customers here have names and zipcodes; product have product names, families, and prices.
 
 The sheer genius of this design? If a customer moves and their zipcode changes, I only have to update one table, no matter how many products they purchased!
 
@@ -76,7 +76,6 @@ JOIN table_b AS b
 ON a.id = b.id
 ```
 
-How it is executed:
 
 
 ## 2. LEFT JOIN
@@ -91,7 +90,6 @@ LEFT JOIN table_b AS b
 ON a.id = b.id
 ```
 
-How it is executed:
 
 
 ## 3. RIGHT JOIN
@@ -114,7 +112,6 @@ RIGHT JOIN table_b AS b
 ON a.id = b.id
 ```
 
-How it is executed:
 
 
 ## 4. SELF JOIN
@@ -131,7 +128,7 @@ RIGHT JOIN table_b AS b
 ON a.id = b.id
 ```
 
-How it is executed:
+
 
 # Practice questions
 
