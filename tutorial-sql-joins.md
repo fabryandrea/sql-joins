@@ -86,7 +86,8 @@ ON a.id = b.id
 Find all customers, including those who haven't yet purchased anything yet but registered on our website, and the products they purchased (if any).
 
 In this particular case, we are reversing what we did before:
-* I want all customer names, so I am starting with the `customers` dimension table not the `orders` fact table. `customers` :arrow_right: `orders`
+* I want all customer names, so I am starting with the `customers` dimension table not the `orders` fact table.
+* direction: `customers` :arrow_right: `orders`
 * Again, I want to join `customers` with `orders`, except this time I want to keep everyone in the left table, not just the ones that overlap with the right table.
 
 **LEFT JOIN** - the syntax:
@@ -112,7 +113,8 @@ First, note that these are not orders, so our `orders` fact table is not going t
 Most ecommerce companies track select events on their websites using anonymous IDs. When a customer logs in, that anonymous ID will be traced to their account ID. Since anonymous IDs are assigned randomly at every visit, one customer may have multiple anonymous IDs but will only have one account ID. Sometimes a customer will never log in during their browsing session and their anonymous ID will remain truly anonymous.
 
 Here, we are going the opposite way:
-* we want to keep everyone in the right `views` table and add information from the left `users` table, if available. `users` :arrow_left: `views`
+* we want to keep everyone in the right `views` table and add information from the left `users` table, if available.
+* direction: `users` :arrow_left: `views`
 * Hence, we are using :tada: - a right join.
 
 
@@ -134,7 +136,10 @@ Let's start by talking a look at what we expect the answer to be: `SELECT * FROM
 
 Previously, we were joining separate tables - apples to oranges, so to speak. :apple: :left_right_arrow: :tangerine:
 
-But now all the information we need is in one table, we just want to compare this table to itself. This is extremely helpful when we have events that take place over time (for instance, we are looking at people who converted into customers after browsing our website.)
+But now all the information we need is in one table, we just want to compare this table to itself. :apple: :left_right_arrow: :apple: This is extremely helpful when we have events that take place over time - for instance,
+* looking at people who upgraded or canceled their subscriptions or
+* analyzing visitors' browing history or
+* comparing customer spend from one month to next.
 
 
 **SELF JOIN** - the syntax:
