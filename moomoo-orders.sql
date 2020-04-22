@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS dim_products;
 CREATE TABLE dim_products (
 	id VARCHAR(5),
 	name VARCHAR(30),
-  prod_family VARCHAR(10)
+  prod_family VARCHAR(15),
 	price FLOAT(2)
 );
 

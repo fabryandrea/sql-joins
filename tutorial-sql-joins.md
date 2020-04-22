@@ -41,19 +41,31 @@ These abbrevations denote so called fact and dimension tables.
 The sheer genius of this design? If a customer moves and their zipcode changes, I only have to update one table, no matter how many products they purchased!
 
 Now, let's take a look at that product with the id `SKU09`:
-* What is it? `SELECT * FROM dim_products WHERE prod_id = 'SKU09'`
+* What is it? `SELECT * FROM dim_products WHERE id = 'SKU09'`
 * Who bought it? `SELECT cust_id FROM fct_orders WHERE prod_id = 'SKU09'`
 * How do I get their names?
 
-In order to answer the question, let's first learn about CTEs (Common Table Expressions) and aliases, as they are super helpful in answering complex questions in clean code.
+In order to answer this question, let's first learn about CTEs (Common Table Expressions) and aliases, as they are super helpful in answering complex questions in clean code.
 
-```WITH leggings_customers AS (
+```
+WITH leggings_customers AS (
 
   SELECT cust_id
   FROM fct_orders
   WHERE prod_id = 'SKU09'
 
 )
+
+, with_names AS (
+
+  SELECT cust_id, name
+  FROM dim_customers AS c
+  JOIN leggings_customers AS lc
+  ON c.id = lc.cust_id
+
+)
+
+SELECT * FROM with_names;
 ```
 
 
@@ -72,18 +84,62 @@ How it is executed:
 
 **2. LEFT JOIN**
 
-We want to include customers who haven't yet purchased anything yet but registered on our website so we have their names and emails.
+Find all customers, including those who haven't yet purchased anything yet but registered on our website, and the products they purchased (if any).
+
+What is the syntax:
+```
+SELECT a.this, b.that
+FROM table_a AS a
+LEFT JOIN table_b AS b
+ON a.id = b.id
+```
+
+How it is executed:
 
 
 **3. RIGHT JOIN**
 
-We want to understand how popular this product is - which website visitors viewed it?
+Find a list of website visitors who viewed this product, with their name and zipcode (if we have them).
 
 First, note that these are not orders, so our `orders` fact table is not going to work. So let's get the `views` fact table from here: [the `moomoo-views.sql` file](https://github.com/fabryandrea/sql-joins/blob/master/moomoo-views.sql)
 
 ![views ERD](/images/fct_views.png)
 
+## Aside on event tracking
+
+Most ecommerce companies track select events on their websites using anonymous IDs. When a customer logs in, that anonymous ID will be connected to their account ID. Since anonymous IDs are assigned randomly at every visit, one customer may have multiple anonymous IDs but only one account ID. Sometimes a customer will never log in during their browsing session and the anonymous ID will remain anonymous.
+
+What is the syntax:
+```
+SELECT a.this, b.that
+FROM table_a AS a
+RIGHT JOIN table_b AS b
+ON a.id = b.id
+```
+
+How it is executed:
+
 
 **4. SELF JOIN**
 
 Find people who viewed `SKU01` before `SKU09`.
+
+Let's start by talking a look at what we expect the answer to be: `SELECT * FROM fct_views ORDER BY user_id, viewed_at DESC`
+
+What is the syntax:
+```
+SELECT a.this, b.that
+FROM table_a AS a
+RIGHT JOIN table_b AS b
+ON a.id = b.id
+```
+
+How it is executed:
+
+# Practice questions
+
+Now it's your turn to practice:
+1. Find the zipcodes of all customers who viewed the product `SKU01`.
+2. Find all the customers who purchased `SKU01` before `SKU09`.
+3. Find all the customers who viewed `SKU01` before purchasing `SKU09`.
+4. Find all the customers who viewed `SKU01` and include their names, if possible.

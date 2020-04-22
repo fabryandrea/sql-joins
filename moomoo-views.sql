@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS dim_users;
 CREATE TABLE dim_users (
-  id VARCHAR(10),
+  id VARCHAR(5),
   cust_id INTEGER,
 	name VARCHAR(10),
   zipcode INTEGER
@@ -9,7 +9,7 @@ CREATE TABLE dim_users (
 DROP TABLE IF EXISTS fct_views;
 CREATE TABLE fct_views (
   viewed_at TIMESTAMP,
-	user_id INTEGER,
+	user_id VARCHAR(5),
 	prod_id VARCHAR(5)
 );
 
@@ -24,14 +24,14 @@ INSERT INTO dim_users VALUES ('h6m9', NULL, NULL, NULL);
 INSERT INTO dim_users VALUES ('i0p3', NULL, NULL, NULL);
 
 
-INSERT INTO fct_orders VALUES ('2019-06-22 19:10:25', 'a4bf', 'SKU01');
-INSERT INTO fct_orders VALUES ('2019-08-30 17:32:04', 'a4bf', 'SKU05');
-INSERT INTO fct_orders VALUES ('2019-12-06 20:33:12', 'a4bf', 'SKU09');
-INSERT INTO fct_orders VALUES ('2020-04-02 11:10:25', 'b5g8', 'SKU01');
-INSERT INTO fct_orders VALUES ('2019-11-15 14:35:37', 'e2f3', 'SKU01');
-INSERT INTO fct_orders VALUES ('2019-11-15 14:46:34', 'e2f3', 'SKU09');
-INSERT INTO fct_orders VALUES ('2019-01-23 08:10:02', 'i0p3', 'SKU01');
-INSERT INTO fct_orders VALUES ('2019-01-24 06:51:15', 'i0p3', 'SKU05');
-INSERT INTO fct_orders VALUES ('2019-03-09 23:22:13', 'g2b2', 'SKU05');
-INSERT INTO fct_orders VALUES ('2020-04-04 18:16:09', 'f5l8', 'SKU05');
-INSERT INTO fct_orders VALUES ('2019-12-22 09:18:39', 'f5l8', 'SKU09');
+INSERT INTO fct_views VALUES ('2019-06-22 19:10:25', 'a4bf', 'SKU01');
+INSERT INTO fct_views VALUES ('2019-08-30 17:32:04', 'a4bf', 'SKU05');
+INSERT INTO fct_views VALUES ('2019-12-06 20:33:12', 'a4bf', 'SKU09');
+INSERT INTO fct_views VALUES ('2020-04-02 11:10:25', 'b5g8', 'SKU01');
+INSERT INTO fct_views VALUES ('2019-11-15 14:35:37', 'e2f3', 'SKU01');
+INSERT INTO fct_views VALUES ('2019-11-15 14:46:34', 'e2f3', 'SKU09');
+INSERT INTO fct_views VALUES ('2019-01-23 08:10:02', 'i0p3', 'SKU01');
+INSERT INTO fct_views VALUES ('2019-01-24 06:51:15', 'i0p3', 'SKU05');
+INSERT INTO fct_views VALUES ('2019-03-09 23:22:13', 'g2b2', 'SKU05');
+INSERT INTO fct_views VALUES ('2020-04-04 18:16:09', 'f5l8', 'SKU05');
+INSERT INTO fct_views VALUES ('2019-12-22 09:18:39', 'f5l8', 'SKU09');
