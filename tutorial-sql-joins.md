@@ -10,11 +10,11 @@ SQL joins enable us to get data from two or more tables by (you guessed it!) joi
 
 We are going to imagine that we are working for MooMoo, a modern athleisure ecommerce company that offers customers a selection of thoughtfully curated high-performance clothes on its website.
 
-**1. (INNER) JOIN**
+## 1. (INNER) JOIN
 
 We are running an email promotion. You are asked to find the names of all customers who purchased the product with the stock keeping unit ID `SKU09`. (Stock keeping units are alphanumeric codes used to manage sales and inventory. They are unique to products and help track information on product, manufacturer, brand, price, etc..)
 
-## First aside: let's get our data into Postgres
+### First aside: let's get our data into Postgres
 
 Let's open our terminal and create a database called `moomoo`:
 
@@ -28,7 +28,7 @@ Let's connect to this database:
 
 Then add our data from this file: [`moomoo-orders.sql`](https://github.com/fabryandrea/sql-joins/blob/master/moomoo-orders.sql)
 
-## Sidebar on relational databases
+### Sidebar on relational databases
 
 ![orders ERD](/images/fct_orders.png)
 
@@ -68,8 +68,7 @@ WITH leggings_customers AS (
 SELECT * FROM with_names;
 ```
 
-
-INNER JOIN - the syntax:
+**INNER JOIN** - the syntax:
 ```
 SELECT a.this, b.that
 FROM table_a AS a
@@ -80,11 +79,11 @@ ON a.id = b.id
 How it is executed:
 
 
-**2. LEFT JOIN**
+## 2. LEFT JOIN
 
 Find all customers, including those who haven't yet purchased anything yet but registered on our website, and the products they purchased (if any).
 
-What is the syntax:
+**LEFT JOIN** - the syntax:
 ```
 SELECT a.this, b.that
 FROM table_a AS a
@@ -107,7 +106,7 @@ First, note that these are not orders, so our `orders` fact table is not going t
 
 Most ecommerce companies track select events on their websites using anonymous IDs. When a customer logs in, that anonymous ID will be connected to their account ID. Since anonymous IDs are assigned randomly at every visit, one customer may have multiple anonymous IDs but only one account ID. Sometimes a customer will never log in during their browsing session and the anonymous ID will remain anonymous.
 
-What is the syntax:
+**RIGHT JOIN** - the syntax:
 ```
 SELECT a.this, b.that
 FROM table_a AS a
@@ -124,7 +123,7 @@ Find people who viewed `SKU01` before `SKU09`.
 
 Let's start by talking a look at what we expect the answer to be: `SELECT * FROM fct_views ORDER BY user_id, viewed_at DESC`
 
-What is the syntax:
+**SELF JOIN** - the syntax:
 ```
 SELECT a.this, b.that
 FROM table_a AS a
