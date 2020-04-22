@@ -14,7 +14,7 @@ We are going to imagine that we are working for MooMoo, a modern athleisure ecom
 
 We are running an email promotion. You are asked to find the names of all customers who purchased the product with the stock keeping unit ID `SKU09`. (Stock keeping units are alphanumeric codes used to manage sales and inventory. They are unique to products and help track information on product, manufacturer, brand, price, etc..)
 
-### First aside: let's get our data into Postgres
+## First aside: let's get our data into Postgres
 
 Let's open our terminal and create a database called `moomoo`:
 
@@ -102,7 +102,7 @@ First, note that these are not orders, so our `orders` fact table is not going t
 
 ![views ERD](/images/fct_views.png)
 
-### Aside on event tracking
+## Aside on event tracking
 
 Most ecommerce companies track select events on their websites using anonymous IDs. When a customer logs in, that anonymous ID will be connected to their account ID. Since anonymous IDs are assigned randomly at every visit, one customer may have multiple anonymous IDs but only one account ID. Sometimes a customer will never log in during their browsing session and the anonymous ID will remain anonymous.
 
