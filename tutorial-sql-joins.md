@@ -34,16 +34,15 @@ Then add our data from [the `moomoo-orders.sql` file](https://github.com/fabryan
 
 What do we have here? And why do these tables start with these funny preambles, `fct_` and `dim_`?
 
-These abbrevations denote so called fact and dimension tables. Fact tables record certain facts about our business, such as order transactions - this table records when order transactions took place, what customers were involved, and what products they ordered.
-
-Dimension tables add more information about one dimension of the fact table - they tell us more about the customers and the products involved. Customers here have
+These abbrevations denote so called fact and dimension tables.
+* **Fact tables** record certain facts about our business, such as order transactions - this table records when order transactions took place, what customers were involved, and what products they ordered.
+* **Dimension tables** add more information about one dimension of the fact table - they tell us more about the customers and the products involved. Customers here have
 
 The sheer genius of this design? If a customer moves and their zipcode changes, I only have to update one table, no matter how many products they purchased!
 
 Let's take a look at that product with the id `SKU09`.
 
-
-In order to answer the question, let's first learn about CTEs (Common Table Expressions), as they are super helpful in
+In order to answer the question, let's first learn about CTEs (Common Table Expressions) and aliases, as they are super helpful in answering complex questions in clean code.
 
 **INNER JOIN**
 What is the syntax:
@@ -56,17 +55,20 @@ ON a.id = b.id
 
 How it is executed:
 
+
 **2. LEFT JOIN**
 
 We want to include customers who haven't yet purchased anything yet but registered on our website so we have their names and emails.
 
+
 **3. RIGHT JOIN**
 
-We want to understand how popular this product is - how many website visitors viewed it?
+We want to understand how popular this product is - which website visitors viewed it?
 
 First, note that these are not orders, so our `orders` fact table is not going to work. So let's get the `views` fact table from here: [the `moomoo-views.sql` file](https://github.com/fabryandrea/sql-joins/blob/master/moomoo-views.sql)
 
 ![views ERD](/images/fct_views.png)
+
 
 **4. SELF JOIN**
 
