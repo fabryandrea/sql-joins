@@ -41,7 +41,7 @@ These abbrevations denote so called fact and dimension tables.
 
 The sheer genius of this design? If a customer moves and their zipcode changes, I only have to update one table, no matter how many products they purchased!
 
-Now, back to teh question: Find the names of all customers who purchased `SKU09`. Let's take a look at that product with the id `SKU09`:
+Now, back to the question: Find the names of all customers who purchased `SKU09`. Let's take a look at that product with the id `SKU09`:
 * What is it? `SELECT * FROM dim_products WHERE id = 'SKU09'`
 * Who bought it? `SELECT cust_id FROM fct_orders WHERE prod_id = 'SKU09'`
 * How do I get their names?
@@ -109,7 +109,7 @@ First, note that these are not orders, so our `orders` fact table is not going t
 
 Most ecommerce companies track select events on their websites using anonymous IDs. When a customer logs in, that anonymous ID will be traced to their account ID. Since anonymous IDs are assigned randomly at every visit, one customer may have multiple anonymous IDs but will only have one account ID. Sometimes a customer will never log in during their browsing session and their anonymous ID will remain truly anonymous.
 
-Here, we are going the opposite way - we want to keep everyone in the right `views` table and add information from the left `users` table, if available. Hence, we are using a - :tada: - right join.
+Here, we are going the opposite way - we want to keep everyone in the right `views` table and add information from the left `users` table, if available. Hence, we are using - :tada: - a right join.
 
 
 **RIGHT JOIN** - the syntax:
@@ -134,8 +134,9 @@ Previously, we were joining separate tables - apples to oranges, so to speak. Bu
 ```
 SELECT a.this, b.that
 FROM table_a AS a
-RIGHT JOIN table_b AS b
+JOIN table_a AS b
 ON a.id = b.id
+AND ...
 ```
 
 
