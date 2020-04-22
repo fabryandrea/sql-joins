@@ -10,7 +10,7 @@ WITH leggings_customers AS (
 
 , with_names AS (
 
-  SELECT cust_id, name
+  SELECT cust_id, cust_name
   FROM dim_customers AS c
   JOIN leggings_customers AS lc
   ON c.id = lc.cust_id
@@ -23,7 +23,7 @@ SELECT * FROM with_names;
 
 WITH with_products AS (
 
-  SELECT id, name, prod_id
+  SELECT id, cust_name, prod_id
   FROM dim_customers cust
   LEFT JOIN fct_orders ord
   ON cust.id = ord.cust_id
@@ -44,7 +44,7 @@ WITH leggings_viewers AS (
 
 , with_zips AS (
 
-  SELECT user_id, name, zipcode
+  SELECT user_id, cust_name, zipcode
   FROM dim_users AS a
   RIGHT JOIN leggings_viewers AS b
   ON a.id = b.user_id

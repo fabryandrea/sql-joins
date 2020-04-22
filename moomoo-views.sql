@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS dim_users;
 CREATE TABLE dim_users (
   id VARCHAR(5),
   cust_id INTEGER,
-	name VARCHAR(10),
+	cust_name VARCHAR(10),
   zipcode INTEGER
 );
 

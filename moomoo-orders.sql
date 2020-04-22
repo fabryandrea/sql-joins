@@ -1,16 +1,16 @@
 DROP TABLE IF EXISTS dim_customers;
 CREATE TABLE dim_customers (
   id INTEGER,
-	name VARCHAR(10),
+  cust_name VARCHAR(10),
   zipcode INTEGER
 );
 
 DROP TABLE IF EXISTS dim_products;
 CREATE TABLE dim_products (
-	id VARCHAR(5),
-	name VARCHAR(30),
+  id VARCHAR(5),
+  prod_name VARCHAR(30),
   prod_family VARCHAR(15),
-	price FLOAT(2)
+  price FLOAT(2)
 );
 
 DROP TABLE IF EXISTS fct_orders;

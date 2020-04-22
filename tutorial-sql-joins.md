@@ -61,7 +61,7 @@ WITH leggings_customers AS (
 
 , with_names AS (
 
-  SELECT cust_id, name
+  SELECT cust_id, cust_name
   FROM dim_customers AS c
   JOIN leggings_customers AS lc
   ON c.id = lc.cust_id
