@@ -1,8 +1,8 @@
-## Introduction to SQL Joins
+# Introduction to SQL Joins
 
-SQL joins enable us to get data from two or more tables by (you guessed it!) joining them. This is the real power of relational databases - we can select any information from any table, as long as we understand the relationships between those tables.
+SQL joins enable us to get data from two or more tables by (you guessed it!) joining them. This is the real power of relational databases - we can select any information from any table, as long as we understand the relationship between those tables.
 
-## What are we going to do today?
+# What are we going to do today?
 
 1. Learn about SQL joins
 2. Create a database and fill it with data
@@ -14,7 +14,7 @@ We are going to imagine that we are working for MooMoo, a modern athleisure ecom
 
 We are running an email promotion. You are asked to find the names of all customers who purchased the product with the stock keeping unit ID `SKU09`. (Stock keeping units are alphanumeric codes used to manage sales and inventory. They are unique to products and help track information on product, manufacturer, brand, price, etc..)
 
-### First aside: let's get our data into Postgres
+## First aside: let's get our data into Postgres
 
 Let's open our terminal and create a database called `moomoo`:
 
@@ -24,11 +24,11 @@ Let's connect to this database:
 
 `$ psql moomoo`
 
-Note: We are now in Postgres land and not in terminal land - lines no longer start with `$` but with `#`.
+**Note:** We are now in Postgres land and not in terminal land - lines no longer start with `$` but with `#`.
 
-Then add our data from [the `moomoo-orders.sql` file](https://github.com/fabryandrea/sql-joins/blob/master/moomoo-orders.sql)
+Then add our data from this file: [`moomoo-orders.sql`](https://github.com/fabryandrea/sql-joins/blob/master/moomoo-orders.sql)
 
-### Sidebar on relational databases
+## Sidebar on relational databases
 
 ![orders ERD](/images/fct_orders.png)
 
@@ -40,11 +40,25 @@ These abbrevations denote so called fact and dimension tables.
 
 The sheer genius of this design? If a customer moves and their zipcode changes, I only have to update one table, no matter how many products they purchased!
 
-Let's take a look at that product with the id `SKU09`.
+Now, let's take a look at that product with the id `SKU09`:
+* What is it? `SELECT * FROM dim_products WHERE prod_id = 'SKU09'`
+* Who bought it? `SELECT cust_id FROM fct_orders WHERE prod_id = 'SKU09'`
+* How do I get their names?
 
 In order to answer the question, let's first learn about CTEs (Common Table Expressions) and aliases, as they are super helpful in answering complex questions in clean code.
 
+```WITH leggings_customers AS (
+
+  SELECT cust_id
+  FROM fct_orders
+  WHERE prod_id = 'SKU09'
+
+)
+```
+
+
 **INNER JOIN**
+
 What is the syntax:
 ```
 SELECT a.this, b.that
