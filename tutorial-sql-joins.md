@@ -26,11 +26,11 @@ Let's connect to this database:
 
 Note: We are now in Postgres land and not in terminal land - lines no longer start with `$` but with `#`.
 
-Then add our data from (the `moomoo-orders.sql` file)[https://github.com/fabryandrea/sql-joins/blob/master/moomoo-orders.sql]
+Then add our data from [the `moomoo-orders.sql` file](https://github.com/fabryandrea/sql-joins/blob/master/moomoo-orders.sql)
 
 ### Sidebar on relational databases
 
-![orders ERD](/images/fct_orders.jpeg)
+![orders ERD](/images/fct_orders.png)
 
 What do we have here? And why do these tables start with these funny preambles, `fct_` and `dim_`?
 
@@ -64,7 +64,9 @@ We want to include customers who haven't yet purchased anything yet but register
 
 We want to understand how popular this product is - how many website visitors viewed it?
 
-First, note that these are not orders, so our `orders` fact table is not going to work.
+First, note that these are not orders, so our `orders` fact table is not going to work. So let's get the `views` fact table from here: [the `moomoo-views.sql` file](https://github.com/fabryandrea/sql-joins/blob/master/moomoo-views.sql)
+
+![views ERD](/images/fct_views.png)
 
 **4. SELF JOIN**
 
