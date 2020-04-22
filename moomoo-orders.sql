@@ -16,8 +16,8 @@ CREATE TABLE dim_products (
 DROP TABLE IF EXISTS fct_orders;
 CREATE TABLE fct_orders (
   ordered_at TIMESTAMP,
-	cust_id INTEGER,
-	prod_id VARCHAR(5)
+  cust_id INTEGER,
+  prod_id VARCHAR(5)
 );
 
 INSERT INTO dim_customers VALUES (1, 'Alex', 10128);

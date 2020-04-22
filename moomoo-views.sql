@@ -2,15 +2,15 @@ DROP TABLE IF EXISTS dim_users;
 CREATE TABLE dim_users (
   id VARCHAR(5),
   cust_id INTEGER,
-	cust_name VARCHAR(10),
+  cust_name VARCHAR(10),
   zipcode INTEGER
 );
 
 DROP TABLE IF EXISTS fct_views;
 CREATE TABLE fct_views (
   viewed_at TIMESTAMP,
-	user_id VARCHAR(5),
-	prod_id VARCHAR(5)
+  user_id VARCHAR(5),
+  prod_id VARCHAR(5)
 );
 
 INSERT INTO dim_users VALUES ('a4bf', 1, 'Alex', 10128);
